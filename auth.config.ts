@@ -30,6 +30,15 @@ export const authOptions = {
       session.accessToken = token.accessToken;
       return session;
     },
+    async redirect({ url, baseUrl }: any) {
+      // Check if the URL has a `redirect_uri` query parameter
+      const redirectUri = new URLSearchParams(url).get('redirect_uri');
+      console.log(redirectUri)
+      if (redirectUri) {
+        return redirectUri;  // Redirect to the custom redirect_uri
+      }
+      return baseUrl;  // Default to the base URL (e.g., homepage)
+    }
   },
 };
 
