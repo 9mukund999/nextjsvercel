@@ -21,7 +21,7 @@ function SearchButton() {
 
 
 
-export default function SubmitForm({createPost}) {
+export default function SubmitForm({}) {
   const [query, setQuery] = useState('');
   const { data: session, update } = useSession();
   var updatedSession;
@@ -36,7 +36,7 @@ console.log(session, 'llllllllk');
   if (session) {
     return (
       <>
-        Signed in as {session.user.email} <br />
+        Signed in as {session && session.user ? session.user.email : 'noexist'} <br />
         <button onClick={() => signOut()}>Sign out</button><br/>
         <button onClick={updateSession}>Edit</button>
       </>

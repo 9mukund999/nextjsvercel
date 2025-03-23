@@ -7,17 +7,17 @@ import SubmitForm from "@/src/app/components/FormHandlers";
 import Form from 'next/form'
 import { SessionProvider } from "next-auth/react"
 
-export async function createPost(prevState: any, formData: FormData) {
-  "use server";  
-  console.log("kkk", formData)
-  const query = formData.get("query");
-  console.log("query", query);
+//export async function createPost(prevState: any, formData: FormData): Promise<void> {
+  // "use server";  
+  // console.log("kkk", formData)
+  // const query = formData.get("query");
+  // console.log("query", query);
   // Create a new post
   // ...
   // return { message: 'Failed to create post' }
   // Redirect to the new post
   // redirect(`/posts/${data.id}`)
-}
+//}
 export default async function Home() {
   
   return (
@@ -38,7 +38,7 @@ export default async function Home() {
     </Form> */}
       {/* <SearchButton /> */}
       {/* <AuthButtons /> */}
-      <SubmitForm createPost={createPost}/>
+      <SubmitForm/>
     </>
   );
 }

@@ -4,13 +4,13 @@ import GitHubProvider from "next-auth/providers/github"; // Import GitHub provid
 export const authOptions = {
   providers: [
     GitHubProvider({
-      clientId: process.env.GITHUB_CLIENT_ID,
-      clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      clientId: process.env.GITHUB_CLIENT_ID || '',
+      clientSecret: process.env.GITHUB_CLIENT_SECRET || '',
     }),
     // You can add other providers if needed, like Google, Facebook, etc.
   ],
   callbacks: {
-    async jwt({ token, account, trigger, session }) {
+    async jwt({ token, account, trigger, session }: any) {
       // token.accountlevel = 'lplplpplp';
       if(trigger == 'update') {
         token.accountlevel = session.accountlevel;
@@ -23,7 +23,7 @@ export const authOptions = {
       }
       return token;
     },
-    async session({ session, token }) {
+    async session({ session, token }: any) {
       // session.test='kkkkkkkkkk';
         console.log("session", session);
         console.log("token", token);
